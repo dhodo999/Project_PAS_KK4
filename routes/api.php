@@ -30,5 +30,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('review/{id}', [ReviewController::class, 'show']);
     Route::resource('review', ReviewController::class)->except('create', 'edit', 'show', 'index');
     
-    Route::post('/logout', [AuthController::class, 'logout']);
+    Route::post('logout', [AuthController::class, 'logout']);
 });
