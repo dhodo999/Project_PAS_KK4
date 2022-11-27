@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ListController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ReviewController;
 
 /*
@@ -25,6 +27,14 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('makanan', [ListController::class, 'index']);
     Route::get('makanan/{id}', [ListController::class, 'show']);
     Route::resource('makanan', ListController::class)->except('create', 'edit', 'show', 'index');
+    
+    Route::get('order', [OrderController::class, 'index']);
+    Route::get('order/{id}', [OrderController::class, 'show']);
+    Route::resource('order', OrderController::class)->except('create', 'edit', 'show', 'index');
+    
+    Route::get('payment', [PaymentController::class, 'index']);
+    Route::get('payment/{id}', [PaymentController::class, 'show']);
+    Route::resource('payment', PaymentController::class)->except('create', 'edit', 'show', 'index');
 
     Route::get('review', [ReviewController::class, 'index']);
     Route::get('review/{id}', [ReviewController::class, 'show']);
