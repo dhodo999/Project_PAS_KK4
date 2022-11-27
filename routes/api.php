@@ -21,10 +21,12 @@ use App\Http\Controllers\ReviewController;
 //public route 
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
+Route::get('makanan', [ListController::class, 'index']);
+Route::get('review', [ReviewController::class, 'index']);
+
 
 //protected route
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('makanan', [ListController::class, 'index']);
     Route::get('makanan/{id}', [ListController::class, 'show']);
     Route::resource('makanan', ListController::class)->except('create', 'edit', 'show', 'index');
     
@@ -36,7 +38,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('payment/{id}', [PaymentController::class, 'show']);
     Route::resource('payment', PaymentController::class)->except('create', 'edit', 'show', 'index');
 
-    Route::get('review', [ReviewController::class, 'index']);
     Route::get('review/{id}', [ReviewController::class, 'show']);
     Route::resource('review', ReviewController::class)->except('create', 'edit', 'show', 'index');
     
